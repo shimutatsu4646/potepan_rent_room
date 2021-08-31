@@ -1,2 +1,8 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= form_with model: @user do |f| %>
+  <%= render "shared/user_form" %>
+  <!--現在のパスワード（変更前）を入力させる-->
+  <!--コントローラーで一致してるか確認。-->
+  <%=f.label :current_password, '現在のパスワード' %>
+  <%= f.text_field :current_password placeholder:"変更前のパスワードを入力してください" %>
+  <%= f.submit "変更" %>
+<% end %>

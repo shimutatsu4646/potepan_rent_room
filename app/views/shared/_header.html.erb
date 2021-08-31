@@ -1,0 +1,10 @@
+<header>
+  <div><%= link_to "Rent_room App", root_path %></div>
+  <div><%= @current_user.name %></div>
+  <div><%= link_to "#{@current_user.icon_image}", @current_user %></div>
+  <div><%= link_to "ルーム登録", new_inn_path %></div>
+  <div><%= link_to "予約済みルーム", reservations_path %></div>
+  <div><%= link_to "登録済みルーム", inns_path %></div>
+  <div><%= link_to "ユーザー設定", user_path(@current_user) %></div>
+  <div><%= link_to "ログアウト", #logout_path %></div>
+</header>

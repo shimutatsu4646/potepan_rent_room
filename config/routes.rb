@@ -10,10 +10,15 @@ Rails.application.routes.draw do
   # get 'users/edit'
   
   # root 'inns/search'
-  get 'reservations/confirm', to: 'reservations#confirm'
-  
-  resources :users, except: [:index]
-  resources :resetvation, only: [:index, :show, :new, :create]
+  root 'users#new'
+  resources :users
   resources :inns
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # resources :reservation, only: [:index, :show, :new, :create, :destory]
+  # get 'reservations/confirm', to: 'reservations#confirm'
+  resources :reservations do  
+    collection do
+      post :confirm
+    end
+  end
+  
 end

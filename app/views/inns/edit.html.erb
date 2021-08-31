@@ -1,2 +1,4 @@
-<h1>Inns#edit</h1>
-<p>Find me in app/views/inns/edit.html.erb</p>
+<%= form_with model: @inn do |f| %>
+  <%= render "shared/inn_form" %>
+  <%= f.submit "編集" %>
+<% end %>

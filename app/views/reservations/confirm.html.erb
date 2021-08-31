@@ -1,0 +1,13 @@
+<%= form_with model: @reservation do |f| %>
+  <%= @reservation.start_time %>
+  <%= @reservation.finish_time %>
+  <%= @reservation.number %>
+  <%= @total_price %>
+  <!-- f.hidden_field :user_id, value: current_user.id -->
+  <!--current_user.idを実装する必要あり。-->
+  <!-- f.hidden_field :inn_id, value: @inn.id -->
+  <!--@innはshowから引っ張ってくる-->
+  <%= f.hidden_field :total_price, value: @total_price %>
+  <%= f.submit "入力画面に戻る", name: 'back' %>
+  <%= f.submit "予約を確定する" %>
+<% end %>
