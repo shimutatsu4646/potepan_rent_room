@@ -1,4 +1,4 @@
 class Reservation < ApplicationRecord
-  belongs_to :users
-  belongs_to :inns
+  belongs_to :user
+  belongs_to :inn
 end

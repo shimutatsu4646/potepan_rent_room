@@ -1,9 +1,9 @@
-class InnsController < ApplicationContoller
+class InnsController < ApplicationController
   before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy]
   
   def index
     # ログインしているユーザーに関連付いたinnを一覧にする
-    @user = User.find(params[:id])
+    @user = User.find_by(id: current_user.id)
     @inns = @user.inns.all
   end
 
@@ -16,11 +16,13 @@ class InnsController < ApplicationContoller
   end
   
   def create
-    @inn = Inn.new(inn_params)
+    @inn = current_user.inns.build(inn_params)
+    # @inn.image.attach(params[:inn][:image])
     if @inn.save
       flash[:notice] = "登録しました。"
       redirect_to @inn
     else
+    # binding.pry
       flash[:alert] = "登録できませんでした。"
       render "new"      
     end
