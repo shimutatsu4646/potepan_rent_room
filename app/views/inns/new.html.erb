@@ -1,6 +1,5 @@
 <%= form_with model: @inn do |f| %>
-  <%= render "shared/inn_form" %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <!--current_user.idを実装する必要あり。-->
+  <!--render "shared/inn_form" %>-->
+  <%= render :partial => 'shared/inn_form', :locals => {:f => f} %>
   <%= f.submit "登録" %>
 <% end %>

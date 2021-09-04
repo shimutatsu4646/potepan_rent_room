@@ -1,38 +1,13 @@
-<!--showビューにアカウントとプロフィールを設置-->
-<!--プロフィールはフォームあり（showで）もちろんuserコントローラーのupdateアクションに送信-->
-<!--アカウントはeditビューに遷移-->
-
-<!--アカウント-->
 <%= @user.email %>
 <%= @user.password %>
-<%= link_to "変更する" edit_user_path(@user)(key: "account") %>
+<%= link_to "変更する", edit_user_path(@user) %>
 
-
-<!--プロフィール-->
-<%= form_with @user, url: {action: 'update' } do |f| %>
+<%= form_with model: @user, html: { method: :patch } do |f| %>
     <%= f.label :icon_image %>
     <%= f.file_field :icon_image %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.label :introduction %>
     <%= f.text_area :introduction, size: "30x4" %>
+    <%= f.submit "更新する" %>
 <% end %>
-
-
-
-
-<!--「設定」もしくはuser_path(@user)などから飛んでまずプロフィールを表示-->
-
-<!--ーーログインユーザーのshowの場合ーー-->
-<!--プロフィールとは別にアカウントのページがある-->
-<!--アカウントページのリンクとプロフィールページのリンクを表示（パーシャル）-->
-<!--プロフィールページにeditリンクがある-->
-<!--アカウントページにもeditリンクがある-->
-<!--↓アカウントリンク側にparamsの値を追加してeditの挙動を変更-->
-<!--link_to "アカウントを編集", edit_user_path(@user)(key: "account")-->
-<!--link_to "プロフィールを編集", edit_user_path(@user)(key: "profile")-->
-<!--ーーーーーーーーーーーーーーーーーー-->
-
-<!--ーー他ユーザーの場合ーー-->
-<!--プロフィール画面のみ-->
-<!--editリンクもなし-->

@@ -1,8 +1,13 @@
 <%= form_with model: @user do |f| %>
-  <%= render "shared/user_form" %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%=f.label :password %>
+    <%= f.password_field :password %>
+    <%=f.label :password_confirmation, 'パスワード（確認）' %>
+    <%= f.password_field :password_confirmation, placeholder:"パスワードを再度入力してください" %>
   <!--現在のパスワード（変更前）を入力させる-->
   <!--コントローラーで一致してるか確認。-->
-  <%=f.label :current_password, '現在のパスワード' %>
-  <%= f.text_field :current_password placeholder:"変更前のパスワードを入力してください" %>
+  <!--%=f.label :current_password, '現在のパスワード' %>-->
+  <!--%= f.text_field :current_password, placeholder:"変更前のパスワードを入力してください" %>-->
   <%= f.submit "変更" %>
 <% end %>

@@ -1,6 +1,9 @@
 class ReservationsController < ApplicationController
+  before_action :logged_in_user, only:[:new, :confirm, :create]
+  
   def index
     # ログインユーザーが予約している宿を一覧にする
+    @reservations = current_user.reservations.all
   end
 
   def show

@@ -1,4 +1,4 @@
 <%= form_with model: @inn do |f| %>
-  <%= render "shared/inn_form" %>
+  <%= render :partial => 'inn_form', :locals => {:f => f} %>
   <%= f.submit "編集" %>
 <% end %>

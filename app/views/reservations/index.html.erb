@@ -1,2 +1,24 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<h2>予約済みルーム一覧</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>住所</th>
+      <th>合計料金</th>
+      <th>予約確定日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.inn.image %></td>
+        <td><%= link_to "#{reservation.inn.name}", inn_path(reservation.inn.id) %></td>
+        <td><%= reservation.inn.adress %></td>
+        <td><%= reservation.total_price %></td>
+        <td><%= reservation.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

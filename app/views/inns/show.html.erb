@@ -1,2 +1,7 @@
-<h1>Inns#show</h1>
-<p>Find me in app/views/inns/show.html.erb</p>
+<div><%= @inn.image %></div>
+<div><%= @inn.name %></div>
+<div><%= @inn.adress %></div>
+<div><%= @inn.price %></div>
+<div><%= @inn.created_at %></div>
+
+<%= link_to "編集する", edit_inn_path(@inn) %>

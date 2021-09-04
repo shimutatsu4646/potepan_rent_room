@@ -1,11 +1,14 @@
-class InnsController < ApplicationController
+class InnsController < ApplicationContoller
+  before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy]
+  
   def index
     # ログインしているユーザーに関連付いたinnを一覧にする
-    @inns = current_user.inns.all
+    @user = User.find(params[:id])
+    @inns = @user.inns.all
   end
 
   def show
-    @inn = Inn.find(params[id])
+    @inn = Inn.find(params[:id])
   end
 
   def new
