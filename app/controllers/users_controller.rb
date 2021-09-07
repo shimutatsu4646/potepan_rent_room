@@ -22,18 +22,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    # @params_key_value = params[:key]
   end
 
   def update
     @user = User.find(params[:id])
-    if params[:key] == "account" #もしくは↓
-    # if @params_key_value == "account"
-      #↓入力された「現在のパスワード」と実際のパスワードが一致いないとき
-      if params[:current_password] != @user.password
-        flash[:alert] = "入力した「変更前のパスワード」が間違っています。"
-        render "edit"
-      end
+    if params[:current_password] != @user.password
+      flash[:alert] = "入力した「変更前のパスワード」が間違っています。"
+      render "edit"
+      return
     end
     if @user.update(user_params)
       flash[:notice] = "編集しました。"
