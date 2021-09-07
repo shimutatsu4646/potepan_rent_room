@@ -1,12 +1,12 @@
-<%= form_with model: @reservation, url: {action: 'confirm'} do |f| %>
-  <!--ここにエラー文入れる-->
-  <!--innのpriceを表示、合計金額はhiddenで渡す？-->
-  <!--とりあえずconfirmアクション内で、newの入力値からtotal_priceを計算して代入する方法でやる。-->
+<h2>ルーム予約</h2>
+
+<%= form_with(model: @reservation, local: true, url: confirm_reservations_path(@reservation)) do |f| %>
   <%= f.label :start_time %>
   <%= f.date_field :start_time %>
   <%= f.label :finish_time %>
   <%= f.date_field :finish_time %>
   <%= f.label :number %>
-  <%= f.date_field :number %>
+  <%= f.number_field :number %>
+  <%= f.hidden_field :inn_id, value: @inn_id %>
   <%= f.submit "確認画面へ" %>
 <% end %>

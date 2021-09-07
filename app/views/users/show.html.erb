@@ -1,6 +1,10 @@
+<h2>ユーザー詳細</h2>
+
 <%= @user.email %>
 <%= @user.password %>
 <%= link_to "変更する", edit_user_path(@user) %>
+
+<h2>プロフィール編集</h2>
 
 <%= form_with model: @user, html: { method: :patch } do |f| %>
     <%= f.label :icon_image %>

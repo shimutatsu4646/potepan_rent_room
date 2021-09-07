@@ -1,3 +1,5 @@
+<h2>ルーム詳細</h2>
+
 <div>ルーム画像：<%= @inn.image %></div>
 <div>ルーム名：<%= @inn.name %></div>
 <div>住所：<%= @inn.adress %></div>
@@ -5,3 +7,4 @@
 <div>登録日：<%= @inn.created_at %></div>
 
 <%= link_to "編集する", edit_inn_path(@inn) %>
+<%= link_to "予約する", new_reservation_path(reservation_inn_id: @inn.id) %>

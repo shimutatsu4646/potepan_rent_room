@@ -1,1 +1,8 @@
-<!--いらないかも-->
+<h2>予約済みルーム詳細</h2>
+
+<div>ルーム名<%= @reservation.inn.name %></div>
+<div>住所<%= @reservation.inn.adress %></div>
+<div>開始日時<%= @reservation.start_time %></div>
+<div>終了日時<%= @reservation.finish_time %></div>
+<div>人数：<%= @reservation.number %></div>
+<div>合計金額<%= @reservation.total_price %></div>

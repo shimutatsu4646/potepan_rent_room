@@ -3,8 +3,7 @@ class InnsController < ApplicationController
   
   def index
     # ログインしているユーザーに関連付いたinnを一覧にする
-    @user = User.find_by(id: current_user.id)
-    @inns = @user.inns.all
+    @inns = current_user.inns.all
   end
 
   def show
