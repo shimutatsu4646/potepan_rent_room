@@ -1,13 +1,15 @@
 <h2>アカウント設定変更</h2>
 
+<%= render "shared/error", obj: @user %>
+
 <%= form_with model: @user do |f| %>
     <%= f.label :email %>
     <%= f.email_field :email %>
-    <%=f.label :password %>
-    <%= f.password_field :password %>
-    <%=f.label :password_confirmation, 'パスワード（確認）' %>
-    <%= f.password_field :password_confirmation, placeholder:"パスワードを再度入力してください" %>
+    <%=f.label :password, "新しいパスワード" %>
+    <%= f.password_field :password, placeholder:"変更しない場合、何も入力しないでください" %>
+    <%=f.label :password_confirmation, '新しいパスワード（確認）' %>
+    <%= f.password_field :password_confirmation, placeholder:"変更する場合、パスワードを再度入力してください" %>
     <%=f.label :current_password, '現在のパスワード' %>
-    <%= f.password_field :current_password, placeholder:"変更前のパスワードを入力してください" %>
+    <%= f.password_field :current_password, placeholder:"現在のパスワードを入力してください" %>
     <%= f.submit "変更" %>
 <% end %>

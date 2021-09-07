@@ -1,5 +1,7 @@
 <h2>ユーザー登録</h2>
 
+<%= render "shared/error", obj: @user %>
+
 <%= form_with model: @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>

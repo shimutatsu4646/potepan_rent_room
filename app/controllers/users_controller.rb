@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only:[:edit, :update, :destroy]
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -26,8 +26,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if params[:current_password] != @user.password
-      flash[:alert] = "入力した「変更前のパスワード」が間違っています。"
+    current_password = params[:user][:current_password]
+    profile_form = params[:user][:profile]
+    if !@user.authenticate(current_password) && profile_form.nil?
+      flash[:alert] = "入力した「現在のパスワード」が間違っています。もしくは入力していません。"
       render "edit"
       return
     end

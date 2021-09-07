@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_045740) do
+ActiveRecord::Schema.define(version: 2021_09_07_060040) do
 
   create_table "inns", force: :cascade do |t|
     t.string "name"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2021_09_04_045740) do
     t.string "adress"
     t.string "image"
     t.string "user_id"
-    t.string "reservation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,8 +39,6 @@ ActiveRecord::Schema.define(version: 2021_09_04_045740) do
     t.string "email"
     t.string "icon_image"
     t.text "introduction"
-    t.integer "reservation_id"
-    t.integer "inn_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

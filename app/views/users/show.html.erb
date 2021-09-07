@@ -13,5 +13,6 @@
     <%= f.text_field :name %>
     <%= f.label :introduction %>
     <%= f.text_area :introduction, size: "30x4" %>
+    <%= f.hidden_field :profile, value: "true" %>
     <%= f.submit "更新する" %>
 <% end %>
