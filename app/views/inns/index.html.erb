@@ -1,36 +1,10 @@
-<h2>ルーム一覧</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>ルーム画像</th>
-      <th>ルーム名</th>
-      <th>住所</th>
-      <th>料金</th>
-      <th>登録日時</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @inns.each do |inn| %>
-      <tr>
-        <td><%= inn.image %></td>
-        <td><%= link_to "#{inn.name}", inn %></td>
-        <td><%= inn.adress %></td>
-        <td><%= inn.price %></td>
-        <td><%= inn.created_at %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
 <h2>ルーム検索</h2>
 
-<%= search_form_for @q, url: search_users_path do |f| %>
+<%= search_form_for @q, url: search_inns_path do |f| %>
   <ul>
     <li>入力しなくても検索できます。</li>
     <li>
-      <%= f.label :adress_cont, '住所' %> 
+      <%= f.label :adress_cont, '住所' %>
       <%= f.search_field :adress_cont %>
     </li>
     <li>
@@ -38,7 +12,7 @@
       <%= f.search_field :price_gteq, placeholder:"半角数字を入力してください" %>円以上
     </li>
     <li>
-      <%= f.search_field :price_lteq, placeholder:"半角数字を入力してください" %>円以下  
+      <%= f.search_field :price_lteq, placeholder:"半角数字を入力してください" %>円以下
     </li>
     <li>
       <%= f.submit '検索' %>

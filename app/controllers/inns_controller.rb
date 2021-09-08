@@ -21,7 +21,6 @@ class InnsController < ApplicationController
       flash[:notice] = "登録しました。"
       redirect_to @inn
     else
-    # binding.pry
       flash[:alert] = "登録できませんでした。"
       render "new"
     end
@@ -45,7 +44,7 @@ class InnsController < ApplicationController
 
   def destroy
     # 関連付いた予約（reservation）が一つもないとき、もしくは
-    # 終了日が現在時刻より後のものがないときに削除できるものとする。
+    # 終了日がreservationインスタンスの現在時刻より後のものがないときに削除できるものとする。
   end
 
   def search

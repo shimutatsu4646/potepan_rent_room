@@ -6,3 +6,4 @@
 <div>終了日時<%= @reservation.finish_time %></div>
 <div>人数：<%= @reservation.number %></div>
 <div>合計金額<%= @reservation.total_price %></div>
+<div>ルームホスト<%= link_to "#{@reservation.inn.user.name}", user_path(@reservation.inn.user) %></div>
