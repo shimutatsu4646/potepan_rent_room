@@ -8,7 +8,7 @@
   <%= f.label :finish_time %>
   <%= f.date_field :finish_time %>
   <%= f.label :number %>
-  <%= f.number_field :number %>
+  <%= f.number_field :number, placeholder:"人数を入力してください（半角数字）" %>
   <%= f.hidden_field :inn_id, value: @inn_id %>
   <%= f.submit "確認画面へ" %>
 <% end %>

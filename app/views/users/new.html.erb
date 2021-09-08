@@ -8,7 +8,7 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
   <%=f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, placeholder:"6文字以上入力してください" %>
   <%=f.label :password_confirmation, 'パスワード（確認）' %>
   <%= f.password_field :password_confirmation, placeholder:"パスワードを再度入力してください" %>
   <%= f.submit "新規アカウント作成" %>
