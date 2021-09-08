@@ -1,13 +1,13 @@
 class InnsController < ApplicationController
-  before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy, :login_user_index]
+  before_action :logged_in_user, only:[:new, :create, :edit, :update, :login_user_index]
   before_action :set_q, only: [:index, :search]
 
   def index
-    @inns = Inn.all
   end
 
   def show
     @inn = Inn.find(params[:id])
+    @user = @inn.user
   end
 
   def new
@@ -29,10 +29,12 @@ class InnsController < ApplicationController
 
   def edit
     @inn = Inn.find(params[:id])
+    inn_create_user?
   end
 
   def update
     @inn = Inn.find(params[:id])
+    inn_create_user?
     if @inn.update(inn_params)
       flash[:notice] = "編集しました。"
       redirect_to @inn
@@ -40,11 +42,6 @@ class InnsController < ApplicationController
       flash[:alert] = "編集できませんでした。"
       render "edit"
     end
-  end
-
-  def destroy
-    # 関連付いた予約（reservation）が一つもないとき、もしくは
-    # 終了日がreservationインスタンスの現在時刻より後のものがないときに削除できるものとする。
   end
 
   def search

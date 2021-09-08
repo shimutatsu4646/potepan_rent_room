@@ -1,12 +1,9 @@
-<h2>ユーザー詳細</h2>
-
-<%= @user.email %>
-<%= @user.password %>
-<%= link_to "変更する", edit_user_path(@user) %>
-
-<h2>プロフィール編集</h2>
-
-<%= form_with model: @user, html: { method: :patch } do |f| %>
+<% if current_user? %>
+  <h2>アカウント</h2>
+  <%= @user.email %>
+  <%= link_to "変更する", edit_user_path(@user) %>
+  <h2>プロフィール編集</h2>
+  <%= form_with model: @user, html: { method: :patch } do |f| %>
     <%= f.label :icon_image %>
     <%= f.file_field :icon_image %>
     <%= f.label :name %>
@@ -15,5 +12,10 @@
     <%= f.text_area :introduction, size: "30x4" %>
     <%= f.hidden_field :profile, value: "true" %>
     <%= f.submit "更新する" %>
+  <% end %>
+<% else %>
+  <h2>プロフィール</h2>
+  <div><%= @user.icon_image %></div>
+  <div>ユーザー名：<%= @user.name %></div>
+  <div><%= @user.introduction %></div>
 <% end %>
-

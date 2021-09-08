@@ -14,6 +14,21 @@ module SessionsHelper
     @user == current_user
   end
   
+  def inn_create_user?
+    @user = @inn.user
+    unless current_user?
+      flash[:alert] = "他ユーザーが登録したルームは編集できません"
+      redirect_to root_path
+    end
+  end
+  
+  def correct_user?
+    if User.find(params[:id]) != current_user
+      flash[:alert] = "他ユーザーの設定を変更することはできません"
+      redirect_to root_path
+    end    
+  end
+  
   def logged_in?
     !current_user.nil?
   end
