@@ -7,7 +7,7 @@
     <!--下記のリンクはドロップダウンメニューにする-->
     <div><%= link_to "ルーム登録", new_inn_path %></div>
     <div><%= link_to "予約済みルーム", reservations_path %></div>
-    <div><%= link_to "登録済みルーム", inns_path %></div>
+    <div><%= link_to "登録済みルーム", login_user_index_inns_path %></div>
     <div><%= link_to "ユーザー設定", user_path(current_user) %></div>
     <div><%= link_to "ログアウト", logout_path, method: :delete %></div>
   <% else %>
