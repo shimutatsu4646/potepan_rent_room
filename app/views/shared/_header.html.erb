@@ -1,17 +1,20 @@
-<header>
-  <div class><%= link_to "Rent_room App", root_path %></div>
-  
-  <% if logged_in? %>
-    <div><%= current_user.name %></div>
-    <div><%= link_to "#{current_user.icon_image}", current_user %></div>
-    <!--下記のリンクはドロップダウンメニューにする-->
-    <div><%= link_to "ルーム登録", new_inn_path %></div>
-    <div><%= link_to "予約済みルーム", reservations_path %></div>
-    <div><%= link_to "登録済みルーム", login_user_index_inns_path %></div>
-    <div><%= link_to "ユーザー設定", user_path(current_user) %></div>
-    <div><%= link_to "ログアウト", logout_path, method: :delete %></div>
-  <% else %>
-    <div><%= link_to "ユーザー新規登録", new_user_path %></div>
-    <div><%= link_to "ログイン", login_path %></div>    
-  <% end %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="navbar-left"><%= link_to "Rent_room App", root_path %></li>
+      <% if logged_in? %>
+        <li><%= current_user.name %></li>
+        <li><%= link_to "#{current_user.icon_image}", current_user %></li>
+        <!--下記のリンクはドロップダウンメニューにする-->
+        <li><%= link_to "ルーム登録", new_inn_path %></li>
+        <li><%= link_to "予約済みルーム", reservations_path %></li>
+        <li><%= link_to "登録済みルーム", login_user_index_inns_path %></li>
+        <li><%= link_to "ユーザー設定", user_path(current_user) %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "ユーザー新規登録", new_user_path %></li>
+        <li><%= link_to "ログイン", login_path %></li>
+      <% end %>
+    </ul>
+  </nav>
 </header>

@@ -2,9 +2,9 @@
 
 <%= form_with(model: @reservation, local: true) do |f| %>
   <div>開始日時：<%= @reservation.start_time %></div>
-  <div>終了日時<%= @reservation.finish_time %></div>
-  <div>人数<%= @reservation.number %></div>
-  <div>合計金額<%= @total_price %></div>
+  <div>終了日：時<%= @reservation.finish_time %></div>
+  <div>人数：<%= @reservation.number %>人</div>
+  <div>合計金額：<%= @total_price %>円</div>
   <div><%= f.hidden_field :total_price, value: @total_price %></div>
   <div><%= f.hidden_field :inn_id %></div>
   <div><%= f.hidden_field :start_time %></div>

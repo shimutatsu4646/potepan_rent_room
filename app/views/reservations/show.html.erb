@@ -1,9 +1,9 @@
 <h2>予約済みルーム詳細</h2>
 
-<div>ルーム名<%= @reservation.inn.name %></div>
-<div>住所<%= @reservation.inn.adress %></div>
-<div>開始日時<%= @reservation.start_time %></div>
-<div>終了日時<%= @reservation.finish_time %></div>
-<div>人数：<%= @reservation.number %></div>
-<div>合計金額<%= @reservation.total_price %></div>
-<div>ルームホスト<%= link_to "#{@reservation.inn.user.name}", user_path(@reservation.inn.user) %></div>
+<li>ルーム名：<%= @reservation.inn.name %></li>
+<li>住所：<%= @reservation.inn.adress %></li>
+<li>開始日時：<%= @reservation.start_time %></li>
+<li>終了日時：<%= @reservation.finish_time %></li>
+<li>人数：<%= @reservation.number %></li>
+<li>合計金額：<%= @reservation.total_price %></li>
+<li>ルームホスト：<%= link_to "#{@reservation.inn.user.name}", user_path(@reservation.inn.user) %></li>

@@ -12,12 +12,16 @@ class ReservationsController < ApplicationController
   def new
     @inn_id ||= params[:reservation_inn_id]
     @reservation = Reservation.new
-    # binding.pry
   end
 
   def confirm
     @reservation = current_user.reservations.build(reservation_params)
-    render :new if @reservation.invalid?
+    if @reservation.invalid?
+      @inn_id = @reservation.inn_id
+      flash.now[:warning] = "予約確認画面に進めませんでした"
+      render :new
+      return
+    end
     start_date = @reservation.start_time
     finish_date = @reservation.finish_time
     how_long = finish_date - start_date
@@ -33,10 +37,11 @@ class ReservationsController < ApplicationController
       return
     end
     if @reservation.save
-      flash[:notice] = "予約が完了しました。"
+      flash[:success] = "予約が完了しました。"
       redirect_to @reservation
     else
-      flash[:alert] = "予約できませんでした。"
+      flash.now[:warning] = "予約できませんでした。"
+      @inn_id = @reservation.inn_id
       render :new
     end
   end

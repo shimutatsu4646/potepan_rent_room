@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bcrypt'
 gem 'pry-rails'
 gem 'ransack'
+gem 'bootstrap-sass'
 
 
 group :development, :test do

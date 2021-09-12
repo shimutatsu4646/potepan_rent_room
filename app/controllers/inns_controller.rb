@@ -18,10 +18,10 @@ class InnsController < ApplicationController
     @inn = current_user.inns.build(inn_params)
     # @inn.image.attach(params[:inn][:image])
     if @inn.save
-      flash[:notice] = "登録しました。"
+      flash[:success] = "登録しました。"
       redirect_to @inn
     else
-      flash[:alert] = "登録できませんでした。"
+      flash.now[:warning] = "登録できませんでした。"
       render "new"
     end
   end
@@ -36,10 +36,10 @@ class InnsController < ApplicationController
     @inn = Inn.find(params[:id])
     inn_create_user?
     if @inn.update(inn_params)
-      flash[:notice] = "編集しました。"
+      flash[:success] = "編集しました。"
       redirect_to @inn
     else
-      flash[:alert] = "編集できませんでした。"
+      flash.now[:warning] = "編集できませんでした。"
       render "edit"
     end
   end

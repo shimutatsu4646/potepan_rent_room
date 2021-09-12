@@ -14,9 +14,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to @user, notice: "アカウントを登録しました。"
+      redirect_to @user, success: "アカウントを登録しました。"
     else
-      flash[:alert] = "アカウントが登録できませんでした。"
+      flash.now[:warning] = "アカウントが登録できませんでした。"
       render "new"
     end
   end
@@ -35,10 +35,10 @@ class UsersController < ApplicationController
       return
     end
     if @user.update(user_params)
-      flash[:notice] = "編集しました。"
+      flash[:success] = "編集しました。"
       redirect_to @user
     else
-      flash[:alert] = "編集できませんでした。"
+      flash.now[:warning] = "編集できませんでした。"
       render "edit"
     end
   end

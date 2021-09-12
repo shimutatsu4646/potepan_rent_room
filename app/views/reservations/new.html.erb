@@ -3,12 +3,14 @@
 <%= render "shared/error", obj: @reservation %>
 
 <%= form_with(model: @reservation, local: true, url: confirm_reservations_path(@reservation)) do |f| %>
-  <%= f.label :start_time %>
-  <%= f.date_field :start_time %>
-  <%= f.label :finish_time %>
-  <%= f.date_field :finish_time %>
-  <%= f.label :number %>
-  <%= f.number_field :number, placeholder:"人数を入力してください（半角数字）" %>
-  <%= f.hidden_field :inn_id, value: @inn_id %>
-  <%= f.submit "確認画面へ" %>
+  <ul>
+    <li><%= f.label :start_time %></li>
+    <li><%= f.date_field :start_time %></li>
+    <li><%= f.label :finish_time %></li>
+    <li><%= f.date_field :finish_time %></li>
+    <li><%= f.label :number %></li>
+    <li><%= f.number_field :number, placeholder:"人数を入力してください（半角数字）" %></li>
+    <li><%= f.hidden_field :inn_id, value: @inn_id %></li>
+    <li><%= f.submit "確認画面へ" %></li>  
+  </ul>
 <% end %>
