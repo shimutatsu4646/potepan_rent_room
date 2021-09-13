@@ -31,6 +31,8 @@ gem 'bcrypt'
 gem 'pry-rails'
 gem 'ransack'
 gem 'bootstrap-sass'
+gem 'carrierwave'
+gem 'mini_magick'
 
 
 group :development, :test do

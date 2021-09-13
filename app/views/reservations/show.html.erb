@@ -1,9 +1,13 @@
 <h2>予約済みルーム詳細</h2>
-
+<% if @reservation.inn.image.present? %>
+  <li><%= inn_image @reservation.inn %></li>
+<% else %>
+  <li>画像なし</li>
+<% end %>
 <li>ルーム名：<%= @reservation.inn.name %></li>
 <li>住所：<%= @reservation.inn.adress %></li>
 <li>開始日時：<%= @reservation.start_time %></li>
 <li>終了日時：<%= @reservation.finish_time %></li>
-<li>人数：<%= @reservation.number %></li>
-<li>合計金額：<%= @reservation.total_price %></li>
+<li>人数：<%= @reservation.number %>人</li>
+<li>合計金額：<%= @reservation.total_price %>円</li>
 <li>ルームホスト：<%= link_to "#{@reservation.inn.user.name}", user_path(@reservation.inn.user) %></li>

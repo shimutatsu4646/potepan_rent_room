@@ -13,7 +13,11 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.inn.image %></td>
+        <% if reservation.inn.image.present? %>
+          <td><%= inn_image(reservation.inn) %></td>
+        <% else %>
+          <td>画像なし</td>
+        <% end %>
         <td><%= link_to "#{reservation.inn.name}", inn_path(reservation.inn.id) %></td>
         <td><%= reservation.inn.adress %></td>
         <td><%= reservation.total_price %></td>

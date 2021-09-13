@@ -1,3 +1,6 @@
+<% if @user.icon_image? %>
+  <div><%= image_tag @user.icon_image.url %></div>
+<% end %>
 <% if current_user? %>
   <h2>アカウント</h2>
   <ul>
@@ -22,7 +25,6 @@
 <% else %>
   <h2>プロフィール</h2>
   <ul>
-    <li><%= @user.icon_image %></li>
     <li>ユーザー名：<%= @user.name %></li>
     <li><%= @user.introduction %></li>    
   </ul>

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:warning] = "編集できませんでした。"
-      render "edit"
+      render "show"
     end
   end
 

@@ -13,7 +13,11 @@
   <tbody>
     <% @current_user_inns.each do |inn| %>
       <tr>
-        <td><%= inn.image %></td>
+        <% if inn.image.present? %>
+          <td><%= inn_image(inn) %></td>
+        <% else %>
+          <td>画像なし</td>
+        <% end %>
         <td><%= link_to "#{inn.name}", inn %></td>
         <td><%= inn.adress %></td>
         <td><%= inn.price %>円</td>

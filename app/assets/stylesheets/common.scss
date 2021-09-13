@@ -2,13 +2,13 @@
 @import "bootstrap";
 
 body {
- padding-top: 60px;
+ padding-top: 70px;
 }
 
 .container{
    text-align: center;
  }
- 
+
  textarea {
   resize: vertical;
  }
@@ -39,10 +39,24 @@ footer {
  color: red;
 }
 
-ul {
+li {
  list-style: none;
- 
 }
+
 .alert {
  text-align: center;
+}
+
+h2 {
+ padding-bottom: 30px;
+ border-bottom: 2px solid #eaeaea;
+}
+
+th {
+ padding: 5px 5px;
+ text-align: center;
+}
+
+td {
+ padding: 5px 5px;
 }
