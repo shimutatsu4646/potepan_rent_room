@@ -3,19 +3,13 @@
 <%= search_form_for @q, url: search_inns_path do |f| %>
   <ul>
     <li>入力しなくても検索できます。</li>
-    <li>
-      <%= f.label :adress_cont, '住所' %>
-      <%= f.search_field :adress_cont %>
-    </li>
-    <li>
-      <%= f.label :price, '料金' %>
-      <%= f.search_field :price_gteq, placeholder:"半角数字を入力してください" %>円以上
-    </li>
-    <li>
-      <%= f.search_field :price_lteq, placeholder:"半角数字を入力してください" %>円以下
-    </li>
-    <li>
-      <%= f.submit '検索' %>
-    </li>
+    <li><%= f.label :adress_cont, '住所' %></li>
+    <li><%= f.search_field :adress_cont %></li>
+    <li><%= f.label :price, '料金' %></li>
+    <li><%= f.search_field :price_gteq, placeholder:"半角数字を入力してください" %>円以上</li>
+    <li><%= f.search_field :price_lteq, placeholder:"半角数字を入力してください" %>円以下</li>
+    <li><%= f.label :price, 'フリーワード' %></li>
+    <li><%= f.search_field :introduction_cont, placeholder:"ルーム紹介文から検索します。" %></li>    
+    <li><%= f.submit '検索' %></li>
   </ul>
 <% end %>
