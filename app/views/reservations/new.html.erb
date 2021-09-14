@@ -11,6 +11,7 @@
     <li><%= f.label :number %></li>
     <li><%= f.number_field :number, placeholder:"人数を入力してください（半角数字）" %></li>
     <li><%= f.hidden_field :inn_id, value: @inn_id %></li>
-    <li><%= f.submit "確認画面へ" %></li>  
+    <li><%= f.submit "確認画面へ" %></li>
   </ul>
 <% end %>
+<li><%=  link_to "ルーム詳細画面に戻る", inn_path(@inn_id) %></li>

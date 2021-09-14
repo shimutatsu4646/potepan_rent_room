@@ -21,7 +21,7 @@
         <td><%= link_to "#{inn.name}", inn %></td>
         <td><%= inn.adress %></td>
         <td><%= inn.price %>円</td>
-        <td><%= inn.updated_at %></td>
+        <td><%= inn.updated_at.to_s(:date_jp) %></td>
       </tr>
     <% end %>
   </tbody>

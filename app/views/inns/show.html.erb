@@ -7,7 +7,7 @@
 <div>ルーム名：<%= @inn.name %></div>
 <div>住所：<%= @inn.adress %></div>
 <div>料金：<%= @inn.price %>円</div>
-<div>登録日：<%= @inn.created_at %></div>
+<div>登録日：<%= @inn.created_at.to_s(:date_jp) %></div>
 <div>ルームホスト：<%= link_to "#{@inn.user.name}", user_path(@inn.user) %></div>
 <% if current_user? %>
   <%= link_to "編集する", edit_inn_path(@inn) %>

@@ -1,8 +1,9 @@
 <h2>予約確認画面</h2>
 
 <%= form_with(model: @reservation, local: true) do |f| %>
-  <div>開始日時：<%= @reservation.start_time %></div>
-  <div>終了日：時<%= @reservation.finish_time %></div>
+  <div>開始日：<%= @reservation.start_time.to_s(:date_jp) %></div>
+  <div>終了日：<%= @reservation.finish_time.to_s(:date_jp) %></div>
+  <div>宿泊日数：<%= "#{how_long_day(@reservation)}泊#{how_long_day(@reservation) + 1}日" %></div>
   <div>人数：<%= @reservation.number %>人</div>
   <div>合計金額：<%= @total_price %>円</div>
   <div><%= f.hidden_field :total_price, value: @total_price %></div>

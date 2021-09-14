@@ -16,7 +16,6 @@ class InnsController < ApplicationController
 
   def create
     @inn = current_user.inns.build(inn_params)
-    # @inn.image.attach(params[:inn][:image])
     if @inn.save
       flash[:success] = "登録しました。"
       redirect_to @inn

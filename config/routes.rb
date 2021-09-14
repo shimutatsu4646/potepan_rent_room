@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   delete 'logout', to: "sessions#destroy"
-  
+
   resources :users
   resources :inns do
     collection do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get :login_user_index
     end
   end
-  resources :reservations do  
+  resources :reservations do
     collection do
       post :confirm
     end

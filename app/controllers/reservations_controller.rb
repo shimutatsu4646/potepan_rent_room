@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :logged_in_user
-  
+
   def index
     @reservations = current_user.reservations.all
   end
@@ -17,23 +17,23 @@ class ReservationsController < ApplicationController
   def confirm
     @reservation = current_user.reservations.build(reservation_params)
     if @reservation.invalid?
-      @inn_id = @reservation.inn_id
       flash.now[:warning] = "予約確認画面に進めませんでした"
-      render :new
+      hold_inn_id
       return
     end
-    start_date = @reservation.start_time
-    finish_date = @reservation.finish_time
-    how_long = finish_date - start_date
+    if how_long_day(@reservation) <= 0
+      flash.now[:warning] = "終了日が開始日より後の日付になるように入力してください。"
+      hold_inn_id
+      return
+    end
     inn = @reservation.inn
-    @total_price = @reservation.number * how_long.to_i * inn.price
+    @total_price = @reservation.number * how_long_day(@reservation).to_i * inn.price
   end
 
   def create
     @reservation = current_user.reservations.build(reservation_params)
     if params[:back]
-      @inn_id = @reservation.inn_id
-      render :new
+      hold_inn_id
       return
     end
     if @reservation.save
@@ -41,8 +41,8 @@ class ReservationsController < ApplicationController
       redirect_to @reservation
     else
       flash.now[:warning] = "予約できませんでした。"
-      @inn_id = @reservation.inn_id
-      render :new
+      hold_inn_id
+      return
     end
   end
 
@@ -51,4 +51,10 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:total_price, :start_time, :finish_time, :number, :inn_id)
   end
+
+  def hold_inn_id
+    @inn_id = @reservation.inn_id
+    render :new
+  end
+
 end

@@ -6,8 +6,9 @@
 <% end %>
 <li>ルーム名：<%= @reservation.inn.name %></li>
 <li>住所：<%= @reservation.inn.adress %></li>
-<li>開始日時：<%= @reservation.start_time %></li>
-<li>終了日時：<%= @reservation.finish_time %></li>
+<li>開始日：<%= @reservation.start_time.to_s(:date_jp) %></li>
+<li>終了日：<%= @reservation.finish_time.to_s(:date_jp) %></li>
+<li>宿泊日数：<%= "#{how_long_day(@reservation)}泊#{how_long_day(@reservation) + 1}日" %></li>
 <li>人数：<%= @reservation.number %>人</li>
 <li>合計金額：<%= @reservation.total_price %>円</li>
 <li>ルームホスト：<%= link_to "#{@reservation.inn.user.name}", user_path(@reservation.inn.user) %></li>

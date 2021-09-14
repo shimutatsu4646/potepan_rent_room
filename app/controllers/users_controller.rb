@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to @user, success: "アカウントを登録しました。"
+      flash[:success] = "アカウントを登録しました。"
     else
       flash.now[:warning] = "アカウントが登録できませんでした。"
       render "new"
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     current_password = params[:user][:current_password]
     profile_form = params[:user][:profile]
     if !@user.authenticate(current_password) && profile_form.nil?
-      flash[:alert] = "入力した「現在のパスワード」が間違っています。もしくは入力していません。"
+      flash.now[:warning] = "入力した「現在のパスワード」が間違っています。もしくは入力していません。"
       render "edit"
       return
     end

@@ -21,7 +21,7 @@
         <td><%= link_to "#{reservation.inn.name}", inn_path(reservation.inn.id) %></td>
         <td><%= reservation.inn.adress %></td>
         <td><%= reservation.total_price %></td>
-        <td><%= reservation.created_at %></td>
+        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
         <td><%= link_to "この予約の詳細を見る", reservation %></td>
       </tr>
     <% end %>
