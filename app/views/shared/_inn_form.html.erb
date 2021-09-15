@@ -1,0 +1,10 @@
+<li><%= f.label :name %></li>
+<li><%= f.text_field :name %></li>
+<li><%= f.label :introduction %></li>
+<li><%= f.text_area :introduction, size: "35x6" %></li>
+<li><%= f.label :price %></li>
+<li><%= f.number_field :price, placeholder:"半角数字を入力してください" %></li>
+<li><%=f.label :adress %></li>
+<li><%= f.text_area :adress, size: "30x5" %></li>
+<li><%=f.label :image %></li>
+<li><%= f.file_field :image %></li>

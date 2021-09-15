@@ -1,0 +1,17 @@
+<h2>ルーム詳細</h2>
+<% if  @inn.image.present? %>
+  <div><%= inn_image @inn %></div>
+<% else %>
+  <div>画像なし</div>
+<% end %>
+<div>ルーム名：<%= @inn.name %></div>
+<div>住所：<%= @inn.adress %></div>
+<div>料金：<%= @inn.price %>円</div>
+<div>ルーム紹介：<%= @inn.introduction %></div>
+<div>登録日：<%= @inn.created_at.to_s(:date_jp) %></div>
+<div>ルームホスト：<%= link_to "#{@inn.user.name}", user_path(@inn.user) %></div>
+<% if current_user? %>
+  <%= link_to "編集する", edit_inn_path(@inn) %>
+<% else %>
+  <%= link_to "予約する", new_reservation_path(reservation_inn_id: @inn.id) %>
+<% end %>

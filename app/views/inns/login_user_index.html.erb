@@ -1,0 +1,30 @@
+<h2>登録済みルーム一覧</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>住所</th>
+      <th>料金</th>
+      <th>登録日時</th>
+      <th>更新日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @current_user_inns.each do |inn| %>
+      <tr>
+        <% if inn.image.present? %>
+          <td><%= inn_image(inn) %></td>
+        <% else %>
+          <td>画像なし</td>
+        <% end %>
+        <td><%= link_to "#{inn.name}", inn %></td>
+        <td><%= inn.adress %></td>
+        <td><%= inn.price %>円</td>
+        <td><%= inn.created_at.to_s(:datetime_jp) %></td>
+        <td><%= inn.updated_at.to_s(:datetime_jp) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,29 @@
+<h2>予約済みルーム一覧</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>住所</th>
+      <th>合計料金</th>
+      <th>予約確定日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <% if reservation.inn.image.present? %>
+          <td><%= inn_image(reservation.inn) %></td>
+        <% else %>
+          <td>画像なし</td>
+        <% end %>
+        <td><%= link_to "#{reservation.inn.name}", inn_path(reservation.inn.id) %></td>
+        <td><%= reservation.inn.adress %></td>
+        <td><%= reservation.total_price %></td>
+        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to "この予約の詳細を見る", reservation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

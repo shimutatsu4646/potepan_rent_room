@@ -1,0 +1,30 @@
+<h2>検索結果</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>住所</th>
+      <th>料金</th>
+      <th>更新日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |inn| %>
+      <tr>
+        <% if inn.image.present? %>
+          <td><%= inn_image(inn) %></td>
+        <% else %>
+          <td>画像なし</td>
+        <% end %>
+        <td><%= link_to "#{inn.name}", inn %></td>
+        <td><%= inn.adress %></td>
+        <td><%= inn.price %>円</td>
+        <td><%= inn.updated_at.to_s(:date_jp) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '検索画面に戻る', inns_path %>

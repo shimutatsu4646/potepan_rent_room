@@ -1,0 +1,10 @@
+<h2>ルーム編集</h2>
+
+<%= render "shared/error", obj: @inn %>
+
+<%= form_with model: @inn do |f| %>
+  <ul>
+    <%= render :partial => 'shared/inn_form', :locals => {:f => f} %>
+    <li><%= f.submit "編集" %></li>  
+  </ul>
+<% end %>

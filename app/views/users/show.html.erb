@@ -1,0 +1,31 @@
+<% if @user.icon_image? %>
+  <div><%= image_tag @user.icon_image.url %></div>
+<% end %>
+<% if current_user? %>
+  <h2>アカウント</h2>
+  <ul>
+    <li><%= @user.email %></li>
+    <li><%= link_to "変更する", edit_user_path(@user) %></li>
+  </ul>
+  
+  <h2>プロフィール編集</h2>
+  
+  <%= form_with model: @user, html: { method: :patch } do |f| %>
+    <ul>
+      <li><%= f.label :icon_image %></li>
+      <li><%= f.file_field :icon_image %></li>
+      <li><%= f.label :name %></li>
+      <li><%= f.text_field :name %></li>
+      <li><%= f.label :introduction %></li>
+      <li><%= f.text_area :introduction, size: "30x4" %></li>
+      <li><%= f.hidden_field :profile, value: "true" %></li>
+      <li><%= f.submit "更新する" %>      
+    </ul>
+  <% end %>
+<% else %>
+  <h2>プロフィール</h2>
+  <ul>
+    <li>ユーザー名：<%= @user.name %></li>
+    <li><%= @user.introduction %></li>    
+  </ul>
+<% end %>
